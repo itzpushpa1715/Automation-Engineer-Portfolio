@@ -87,6 +87,7 @@ const AdminDashboard = () => {
                   value={loginForm.username}
                   onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
                   required
+                  className="bg-white"
                 />
               </div>
               <div>
@@ -96,6 +97,7 @@ const AdminDashboard = () => {
                   value={loginForm.password}
                   onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                   required
+                  className="bg-white"
                 />
               </div>
               <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
@@ -110,9 +112,6 @@ const AdminDashboard = () => {
                 Back to Home
               </Button>
             </form>
-            <p className="text-xs text-slate-500 text-center mt-4">
-              Demo credentials: admin / admin123
-            </p>
           </CardContent>
         </Card>
       </div>
