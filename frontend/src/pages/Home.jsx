@@ -305,83 +305,20 @@ const Home = () => {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="border border-[#ABB2BF]">
-              <div className="border-b border-[#ABB2BF] p-3">
-                <h3 className="text-white font-medium">Automation</h3>
-              </div>
-              <div className="p-4">
-                <div className="flex flex-wrap gap-2">
-                  {skills.automation.map((skill, idx) => (
-                    <span key={idx} className="text-[#ABB2BF] text-sm">{skill}</span>
-                  ))}
+            {Object.entries(groupedSkills).map(([category, skillList]) => (
+              <div key={category} className="border border-[#ABB2BF]">
+                <div className="border-b border-[#ABB2BF] p-3">
+                  <h3 className="text-white font-medium">{category}</h3>
+                </div>
+                <div className="p-4">
+                  <div className="flex flex-wrap gap-2">
+                    {skillList.map((skill, idx) => (
+                      <span key={idx} className="text-[#ABB2BF] text-sm">{skill}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="border border-[#ABB2BF]">
-              <div className="border-b border-[#ABB2BF] p-3">
-                <h3 className="text-white font-medium">AI & ML</h3>
-              </div>
-              <div className="p-4">
-                <div className="flex flex-wrap gap-2">
-                  {skills.aiMachineLearning.map((skill, idx) => (
-                    <span key={idx} className="text-[#ABB2BF] text-sm">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="border border-[#ABB2BF]">
-              <div className="border-b border-[#ABB2BF] p-3">
-                <h3 className="text-white font-medium">Programming</h3>
-              </div>
-              <div className="p-4">
-                <div className="flex flex-wrap gap-2">
-                  {skills.programmingLanguages.map((skill, idx) => (
-                    <span key={idx} className="text-[#ABB2BF] text-sm">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="border border-[#ABB2BF]">
-              <div className="border-b border-[#ABB2BF] p-3">
-                <h3 className="text-white font-medium">Design Tools</h3>
-              </div>
-              <div className="p-4">
-                <div className="flex flex-wrap gap-2">
-                  {skills.designTools.map((skill, idx) => (
-                    <span key={idx} className="text-[#ABB2BF] text-sm">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="border border-[#ABB2BF]">
-              <div className="border-b border-[#ABB2BF] p-3">
-                <h3 className="text-white font-medium">Industry 4.0</h3>
-              </div>
-              <div className="p-4">
-                <div className="flex flex-wrap gap-2">
-                  {skills.industry40.map((skill, idx) => (
-                    <span key={idx} className="text-[#ABB2BF] text-sm">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="border border-[#ABB2BF]">
-              <div className="border-b border-[#ABB2BF] p-3">
-                <h3 className="text-white font-medium">Testing</h3>
-              </div>
-              <div className="p-4">
-                <div className="flex flex-wrap gap-2">
-                  {skills.testing.map((skill, idx) => (
-                    <span key={idx} className="text-[#ABB2BF] text-sm">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
