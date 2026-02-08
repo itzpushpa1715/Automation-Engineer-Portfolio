@@ -46,25 +46,34 @@ const Home = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      const message = {
-        ...formData,
-        id: Date.now(),
-        timestamp: new Date().toISOString()
-      };
-      
-      const existingMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-      existingMessages.push(message);
-      localStorage.setItem('contactMessages', JSON.stringify(existingMessages));
-
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+    try {
+      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${BACKEND_URL}/api/messages`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
 
-      setFormData({ name: '', email: '', message: '' });
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
