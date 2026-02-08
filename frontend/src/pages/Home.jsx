@@ -469,16 +469,16 @@ const Home = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <Square className="w-4 h-4 text-[#C778DD]" />
-              <span className="text-white font-medium">{personalInfo.name}</span>
-              <span className="text-[#ABB2BF]">thepushpaco@outlook.com</span>
+              <span className="text-white font-medium">{profile.name}</span>
+              <span className="text-[#ABB2BF]">{profile.email}</span>
             </div>
             <p className="text-[#ABB2BF] text-sm">© 2025. Made with passion</p>
           </div>
           <div className="flex items-center justify-center gap-4 mt-4">
-            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
               <Github className="w-5 h-5" />
             </a>
-            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
               <Linkedin className="w-5 h-5" />
             </a>
           </div>
