@@ -401,11 +401,11 @@ const Home = () => {
               <div className="border border-[#ABB2BF] p-4">
                 <h3 className="text-white font-medium mb-4">Message me here</h3>
                 <div className="space-y-2">
-                  <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
+                  <a href={`mailto:${profile.email}`} className="flex items-center gap-2 text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
                     <Mail className="w-4 h-4" />
-                    {personalInfo.email}
+                    {profile.email}
                   </a>
-                  <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
+                  <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
                     <Linkedin className="w-4 h-4" />
                     LinkedIn Profile
                   </a>
