@@ -190,11 +190,11 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative z-10">
               <h1 className="text-3xl md:text-4xl font-semibold mb-8">
-                {personalInfo.name} is an <span className="text-[#C778DD]">automation engineer</span> and{' '}
+                {profile.name} is an <span className="text-[#C778DD]">automation engineer</span> and{' '}
                 <span className="text-[#C778DD]">electrical specialist</span>
               </h1>
               <p className="text-[#ABB2BF] mb-8">
-                He crafts innovative automation solutions where technologies meet precision
+                {profile.headline || profile.about}
               </p>
               <Button 
                 onClick={() => scrollToSection('contacts')}
