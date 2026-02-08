@@ -137,13 +137,13 @@ const Home = () => {
       <div className="fixed left-0 top-0 bottom-0 w-16 hidden md:flex flex-col items-center justify-between py-8 z-50">
         <div className="w-px h-32 bg-[#ABB2BF]"></div>
         <div className="flex flex-col gap-4">
-          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
             <Github className="w-6 h-6" />
           </a>
-          <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
             <Linkedin className="w-6 h-6" />
           </a>
-          <a href={`mailto:${personalInfo.email}`} className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
+          <a href={`mailto:${profile.email}`} className="text-[#ABB2BF] hover:text-[#C778DD] transition-colors">
             <Mail className="w-6 h-6" />
           </a>
         </div>
