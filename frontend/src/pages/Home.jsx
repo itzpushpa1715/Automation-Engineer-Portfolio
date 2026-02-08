@@ -333,7 +333,7 @@ const Home = () => {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <p className="text-[#ABB2BF] mb-6">{personalInfo.summary}</p>
+              <p className="text-[#ABB2BF] mb-6">{profile.about}</p>
               
               <div className="mt-8">
                 <h3 className="text-white font-medium mb-4">
