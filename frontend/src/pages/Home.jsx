@@ -156,7 +156,7 @@ const Home = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Square className="w-4 h-4 text-[#C778DD]" />
-              <span className="text-white font-bold">{personalInfo.name.split(' ')[0]}</span>
+              <span className="text-white font-bold">{profile.name.split(' ')[0]}</span>
             </div>
 
             <nav className="flex items-center gap-8">
