@@ -208,7 +208,9 @@ async def init_database():
     # 2. Insert profile
     profile_exists = await db.profile.find_one()
     if not profile_exists:
-        await db.profile.insert_one(PROFILE_DATA)
+        from datetime import datetime
+        profile_with_timestamp = {**PROFILE_DATA, "updated_at": datetime.utcnow()}
+        await db.profile.insert_one(profile_with_timestamp)
         print("✅ Profile data inserted")
     else:
         print("ℹ️  Profile already exists")
