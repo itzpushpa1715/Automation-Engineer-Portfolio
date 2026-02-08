@@ -41,6 +41,15 @@ app.include_router(messages.router, prefix="/api")
 async def root():
     return {"message": "Portfolio API v1.0", "status": "running"}
 
+# Health check endpoint for Kubernetes
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "portfolio-api"}
+
+@app.get("/api/health")
+async def api_health_check():
+    return {"status": "healthy", "service": "portfolio-api"}
+
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
