@@ -1,57 +1,75 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.App {
+  min-height: 100vh;
+  background-color: #282C33;
+  font-family: 'Fira Code', monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Animated decorative elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.float-animation {
+  animation: float 6s ease-in-out infinite;
 }
 
-.App-link {
-    color: #61dafb;
+/* Purple border effect */
+.purple-border {
+  border: 1px solid #C778DD;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Hashtag style for navigation */
+.hashtag::before {
+  content: '#';
+  color: #C778DD;
 }
 
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
+/* Quote styling */
+.quote-border {
+  border: 1px solid #ABB2BF;
+  position: relative;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
+.quote-border::before,
+.quote-border::after {
+  content: '"';
+  font-size: 3rem;
+  color: #ABB2BF;
+  position: absolute;
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f5f9;
+.quote-border::before {
+  top: -20px;
+  left: -10px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #64748b;
-    border-radius: 5px;
+.quote-border::after {
+  bottom: -40px;
+  right: -10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #475569;
+/* Decorative squares */
+.deco-square {
+  border: 1px solid #C778DD;
+  background: transparent;
+}
+
+/* Dot grid */
+.dot-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 8px);
+  grid-template-rows: repeat(5, 8px);
+  gap: 12px;
+}
+
+.dot-grid span {
+  width: 8px;
+  height: 8px;
+  background-color: #ABB2BF;
+  border-radius: 50%;
 }
