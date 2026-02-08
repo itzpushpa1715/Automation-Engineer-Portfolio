@@ -5,12 +5,71 @@ import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Badge } from '../components/ui/badge';
 import { toast } from '../hooks/use-toast';
-import { personalInfo, skills, experience, education, certifications, projects } from '../mock';
+import { profileAPI, skillsAPI, projectsAPI, experienceAPI, educationAPI, certificationsAPI, messagesAPI } from '../services/api';
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // State for all data
+  const [profile, setProfile] = useState(null);
+  const [skills, setSkills] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [experience, setExperience] = useState([]);
+  const [education, setEducation] = useState([]);
+  const [certifications, setCertifications] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch all data on mount
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
+  const fetchAllData = async () => {
+    try {
+      const [
+        profileRes,
+        skillsRes,
+        projectsRes,
+        experienceRes,
+        educationRes,
+        certificationsRes
+      ] = await Promise.all([
+        profileAPI.get(),
+        skillsAPI.getAll(),
+        projectsAPI.getAll(true), // Only visible projects
+        experienceAPI.getAll(),
+        educationAPI.getAll(),
+        certificationsAPI.getAll()
+      ]);
+
+      setProfile(profileRes.data);
+      setSkills(skillsRes.data);
+      setProjects(projectsRes.data);
+      setExperience(experienceRes.data);
+      setEducation(educationRes.data);
+      setCertifications(certificationsRes.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load portfolio data",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Group skills by category
+  const groupedSkills = skills.reduce((acc, skill) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = [];
+    }
+    acc[skill.category].push(skill.name);
+    return acc;
+  }, {});
 
   useEffect(() => {
     const handleScroll = () => {
