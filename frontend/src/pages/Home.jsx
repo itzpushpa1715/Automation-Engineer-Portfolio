@@ -106,24 +106,12 @@ const Home = () => {
     setIsSubmitting(true);
 
     try {
-      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-      const response = await fetch(`${BACKEND_URL}/api/messages`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      await messagesAPI.create(formData);
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
       });
-
-      if (response.ok) {
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
-        });
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error('Failed to send message');
-      }
+      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       toast({
         title: "Error",
@@ -134,6 +122,14 @@ const Home = () => {
       setIsSubmitting(false);
     }
   };
+
+  if (loading || !profile) {
+    return (
+      <div className="min-h-screen bg-[#282C33] flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#282C33] text-white" style={{ fontFamily: 'Fira Code, monospace' }}>
