@@ -7,7 +7,7 @@ Based on your DNS provider interface (which looks like a cPanel/Hosting control 
 
 ## 📋 **What You Need**
 
-Your Emergent deployment URL: `https://dev-portfolio-hub-51.preview.emergentagent.com`
+Your Emergent deployment URL: `https://summary-tool-8.preview.emergentagent.com`
 
 Target domain: `pushpakoirala.com.np`
 
