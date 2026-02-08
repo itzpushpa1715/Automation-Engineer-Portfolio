@@ -81,3 +81,7 @@ android-sdk/
 
 # Note: .env files are committed with placeholder values
 # Production values are injected during deployment
+-e 
+# Environment files
+*.env
+*.env.*
