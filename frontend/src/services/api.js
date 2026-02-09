@@ -25,6 +25,7 @@ export const authAPI = {
   login: (credentials) => api.post('/auth/login', credentials),
   changePassword: (data) => api.post('/auth/change-password', data),
   updateEmail: (data) => api.put('/auth/email', data),
+  updateUsername: (data) => api.put('/auth/username', data),
   logout: () => api.post('/auth/logout'),
 };
 
