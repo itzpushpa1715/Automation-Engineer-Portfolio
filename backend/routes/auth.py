@@ -86,6 +86,32 @@ async def update_email(
     
     return {"message": "Email updated successfully"}
 
+@router.put("/username")
+async def update_username(
+    data: UpdateAdminUsername,
+    admin = Depends(get_current_admin),
+    db: AsyncIOMotorDatabase = Depends(get_db)
+):
+    """Update admin username"""
+    # Verify current password
+    if not verify_password(data.current_password, admin["password_hash"]):
+        raise HTTPException(status_code=400, detail="Current password is incorrect")
+    
+    # Check if username already exists
+    existing = await db.admins.find_one({"username": data.new_username})
+    if existing and str(existing["_id"]) != str(admin["_id"]):
+        raise HTTPException(status_code=400, detail="Username already taken")
+    
+    await db.admins.update_one(
+        {"_id": admin["_id"]},
+        {"$set": {"username": data.new_username, "updated_at": datetime.utcnow()}}
+    )
+    
+    # Generate new token with new username
+    new_token = create_access_token(data={"sub": data.new_username})
+    
+    return {"message": "Username updated successfully", "token": new_token}
+
 @router.post("/logout")
 async def logout(admin = Depends(get_current_admin)):
     """Logout (client should delete token)"""
