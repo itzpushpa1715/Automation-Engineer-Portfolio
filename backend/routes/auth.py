@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends, Header
 from typing import Optional
-from models.admin import AdminLogin, ChangePassword, UpdateAdminEmail
+from models.admin import AdminLogin, ChangePassword, UpdateAdminEmail, UpdateAdminUsername
 from utils.jwt_utils import create_access_token, verify_token
 from utils.password import hash_password, verify_password
 from motor.motor_asyncio import AsyncIOMotorDatabase
