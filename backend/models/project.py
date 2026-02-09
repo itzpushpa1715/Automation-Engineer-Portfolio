@@ -26,3 +26,6 @@ class ProjectUpdate(BaseModel):
     status: Optional[str] = None
     visible: Optional[bool] = None
     order: Optional[int] = None
+    project_url: Optional[str] = None
+    github_url: Optional[str] = None
+    image_url: Optional[str] = None

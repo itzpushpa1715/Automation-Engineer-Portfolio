@@ -19,3 +19,7 @@ class ChangePassword(BaseModel):
 
 class UpdateAdminEmail(BaseModel):
     email: EmailStr
+
+class UpdateAdminUsername(BaseModel):
+    new_username: str
+    current_password: str
