@@ -41,15 +41,18 @@ async def create_project(
     outcome: Optional[str] = Form(None),
     status: str = Form("Completed"),
     visible: bool = Form(True),
+    project_url: Optional[str] = Form(None),
+    github_url: Optional[str] = Form(None),
+    image_url: Optional[str] = Form(None),
     image: Optional[UploadFile] = File(None),
     admin = Depends(get_current_admin),
     db: AsyncIOMotorDatabase = Depends(get_db)
 ):
     """Create project with image upload (protected)"""
-    # Handle image upload
-    image_url = None
+    # Handle image upload or use provided URL
+    final_image_url = image_url
     if image:
-        image_url = await save_upload_file(image, "images")
+        final_image_url = await save_upload_file(image, "images")
     
     # Parse technologies JSON array
     tech_list = json.loads(technologies) if technologies else []
@@ -63,7 +66,9 @@ async def create_project(
         "outcome": outcome,
         "status": status,
         "visible": visible,
-        "image_url": image_url,
+        "image_url": final_image_url,
+        "project_url": project_url,
+        "github_url": github_url,
         "order": 0,
         "created_at": datetime.utcnow(),
         "updated_at": datetime.utcnow()
