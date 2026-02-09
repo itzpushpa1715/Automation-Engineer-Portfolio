@@ -10,6 +10,8 @@ class Project(BaseModel):
     role: Optional[str] = None
     outcome: Optional[str] = None
     image_url: Optional[str] = None
+    project_url: Optional[str] = None
+    github_url: Optional[str] = None
     status: str = "Completed"
     visible: bool = True
     order: int = 0
