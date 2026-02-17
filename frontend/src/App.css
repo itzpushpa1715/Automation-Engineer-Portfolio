@@ -1,6 +1,6 @@
 .App {
   min-height: 100vh;
-  background-color: #282C33;
+  background: linear-gradient(135deg, #0a0e1f 0%, #16213e 100%);
   font-family: 'Fira Code', monospace;
 }
 
@@ -18,29 +18,49 @@
   animation: float 6s ease-in-out infinite;
 }
 
-/* Purple border effect */
-.purple-border {
-  border: 1px solid #C778DD;
+/* Accent color - engineering cyan/blue */
+.accent-color {
+  color: #00d9ff;
+}
+
+.accent-border {
+  border: 1px solid #00d9ff;
 }
 
 /* Hashtag style for navigation */
 .hashtag::before {
   content: '#';
-  color: #C778DD;
+  color: #00d9ff;
+}
+
+/* Grid background pattern */
+.grid-background {
+  background-image:
+    linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.05) 25%, rgba(0, 217, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.05) 75%, rgba(0, 217, 255, 0.05) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.05) 25%, rgba(0, 217, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.05) 75%, rgba(0, 217, 255, 0.05) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+}
+
+/* Glowing border effect */
+.glow-border {
+  border: 1px solid #00d9ff;
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.3), inset 0 0 10px rgba(0, 217, 255, 0.1);
 }
 
 /* Quote styling */
 .quote-border {
-  border: 1px solid #ABB2BF;
+  border: 1px solid #1f4f5f;
   position: relative;
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(0, 100, 150, 0.05) 100%);
 }
 
 .quote-border::before,
 .quote-border::after {
   content: '"';
   font-size: 3rem;
-  color: #ABB2BF;
+  color: #00d9ff;
   position: absolute;
+  opacity: 0.6;
 }
 
 .quote-border::before {
@@ -55,8 +75,14 @@
 
 /* Decorative squares */
 .deco-square {
-  border: 1px solid #C778DD;
+  border: 1px solid #00d9ff;
   background: transparent;
+}
+
+.deco-square-corner {
+  border: 2px solid #00d9ff;
+  background: rgba(0, 217, 255, 0.05);
+  box-shadow: inset 0 0 20px rgba(0, 217, 255, 0.1);
 }
 
 /* Dot grid */
@@ -70,6 +96,31 @@
 .dot-grid span {
   width: 8px;
   height: 8px;
-  background-color: #ABB2BF;
+  background-color: #00d9ff;
   border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 217, 255, 0.6);
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 217, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.9);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Circuit animation */
+@keyframes circuit-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
